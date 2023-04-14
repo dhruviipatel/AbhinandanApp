@@ -37,10 +37,6 @@ class _ImageSliderState extends State<ImageSlider> {
                   return Image.asset(
                     images[index1],
                   );
-                  // Image.network(
-                  //   "http://rental1.ditests.com/public/uploads/" +
-                  //       widget.myprd.productImage[index1].file,
-                  // )
                 },
               )),
         ),

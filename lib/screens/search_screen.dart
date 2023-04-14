@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-
 class SearchScreen extends StatelessWidget {
   const SearchScreen({super.key});
 
@@ -27,7 +26,7 @@ class SearchScreen extends StatelessWidget {
       // color: MyColors.myOrrangeColor,
       child: Padding(
         padding: const EdgeInsets.fromLTRB(12, 24, 12, 0),
-        child: TextField(
+        child: TextFormField(
           // onChanged: (value) => _runFilter(value),
           cursorColor: Colors.black,
           decoration: InputDecoration(

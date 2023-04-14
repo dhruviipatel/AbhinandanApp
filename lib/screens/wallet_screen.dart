@@ -1,7 +1,9 @@
 import 'package:abhinandan/colors.dart';
+import 'package:abhinandan/screens/add_money_in_wallet.dart';
+import 'package:abhinandan/screens/order_confirmed_screen.dart';
 import 'package:flutter/material.dart';
-import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:velocity_x/velocity_x.dart';
+import 'checkout_screen.dart';
 
 class WalletScreen extends StatelessWidget {
   const WalletScreen({super.key});
@@ -9,18 +11,58 @@ class WalletScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: Colors.white70,
+        // backgroundColor: Colors.white70,
         appBar: AppBar(
           title: Text(
             "My Wallet",
             style: TextStyle(
                 color: Colors.black, fontSize: 16, fontWeight: FontWeight.w600),
           ),
-          actions: [
-            IconButton(onPressed: () {}, icon: Icon(MdiIcons.trashCanOutline))
-          ],
           backgroundColor: Colors.white,
           iconTheme: IconThemeData(color: Colors.black),
+        ),
+        bottomSheet: BottomAppBar(
+          height: 50,
+          color: Color(0xff008833),
+          child: Center(
+            child: InkWell(
+              onTap: () => Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => OrderConfirmedScreen())),
+              child: Padding(
+                padding: const EdgeInsets.all(12.0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Row(
+                      children: [
+                        Text(
+                          "Proceed To Buy: ",
+                          style: TextStyle(
+                              fontWeight: FontWeight.w600,
+                              fontSize: 16,
+                              letterSpacing: 0.5,
+                              color: Colors.white),
+                        ),
+                        Icon(Icons.currency_rupee,
+                            size: 16, color: Colors.white),
+                        Text(
+                          "73",
+                          style: TextStyle(
+                              fontWeight: FontWeight.w600,
+                              fontSize: 16,
+                              letterSpacing: 0.5,
+                              color: Colors.white),
+                        ),
+                      ],
+                    ),
+                    Icon(Icons.arrow_forward, color: Colors.white)
+                  ],
+                ),
+              ),
+            ),
+          ),
         ),
         body: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -91,7 +133,7 @@ class WalletScreen extends StatelessWidget {
                                 size: 16,
                               ),
                               Text(
-                                "100",
+                                "500",
                                 style: TextStyle(
                                     fontSize: 16,
                                     fontWeight: FontWeight.w600,
@@ -120,7 +162,7 @@ class WalletScreen extends StatelessWidget {
                                 size: 16,
                               ),
                               Text(
-                                "100",
+                                "500",
                                 style: TextStyle(
                                     fontSize: 16,
                                     fontWeight: FontWeight.w600,
@@ -182,21 +224,31 @@ class WalletScreen extends StatelessWidget {
                     SizedBox(
                       height: 34,
                     ),
-                    Container(
-                      height: 36,
-                      width: 136,
-                      decoration: BoxDecoration(
-                          color: Color(0xff008833),
-                          borderRadius: BorderRadius.circular(4)),
-                      child: Text(
-                        "Add",
-                        style: TextStyle(
-                            fontSize: 14,
-                            fontWeight: FontWeight.w600,
-                            color: Colors.white,
-                            letterSpacing: 0.25),
+                    InkWell(
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => AddInWallet(),
+                          ),
+                        );
+                      },
+                      child: Container(
+                        height: 36,
+                        width: 136,
+                        decoration: BoxDecoration(
+                            color: Color(0xff008833),
+                            borderRadius: BorderRadius.circular(4)),
+                        child: Text(
+                          "Add",
+                          style: TextStyle(
+                              fontSize: 14,
+                              fontWeight: FontWeight.w600,
+                              color: Colors.white,
+                              letterSpacing: 0.25),
+                        ).centered(),
                       ).centered(),
-                    ).centered()
+                    )
                   ]),
             )
           ],
