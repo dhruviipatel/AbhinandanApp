@@ -2,6 +2,10 @@ import 'package:abhinandan/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:velocity_x/velocity_x.dart';
 
+import 'package:timeline_tile/timeline_tile.dart';
+
+import 'draff.dart';
+
 class OrderScreen extends StatelessWidget {
   const OrderScreen({super.key});
 
@@ -80,9 +84,97 @@ class OrderScreen extends StatelessWidget {
                       ).centered(),
                     )
                   ],
-                )
+                ),
               ],
             ),
+            20.heightBox,
+            Container(
+                height: 50,
+                child: Row(
+                  children: [
+                    TimelineTile(
+                      alignment: TimelineAlign.start,
+                      axis: TimelineAxis.horizontal,
+                      indicatorStyle: IndicatorStyle(
+                        color: Colors.white,
+                        width: 10,
+                        iconStyle: IconStyle(
+                            iconData: Icons.recommend_outlined,
+                            fontSize: 27,
+                            color: MyColors.myOrrangeColor),
+                      ),
+                      beforeLineStyle: LineStyle(
+                          thickness: 2, color: MyColors.myOrrangeColor),
+                      afterLineStyle:
+                          LineStyle(thickness: 2, color: Colors.grey),
+                      endChild: Container(
+                        // height: 20,
+                        width: 87,
+                        //color: Colors.amber,
+                        child: Text(
+                          "Confirmed",
+                          style: TextStyle(color: MyColors.myOrrangeColor),
+                        ).centered(),
+                      ),
+                    ),
+                    TimelineTile(
+                      alignment: TimelineAlign.start,
+                      axis: TimelineAxis.horizontal,
+                      indicatorStyle: IndicatorStyle(
+                          color: Colors.white,
+                          // width: 70,
+                          iconStyle: IconStyle(
+                            iconData: Icons.inventory_2_outlined,
+                            fontSize: 25,
+                            color: Color(0xff797979),
+                          )),
+                      beforeLineStyle: LineStyle(thickness: 2),
+                      endChild: Container(
+                        height: 20,
+                        width: 87,
+                        //color: Colors.amber,
+                        child: Text("Preparing").centered(),
+                      ),
+                    ),
+                    TimelineTile(
+                      alignment: TimelineAlign.start,
+                      axis: TimelineAxis.horizontal,
+                      indicatorStyle: IndicatorStyle(
+                          color: Colors.white,
+                          // width: 70,
+                          iconStyle: IconStyle(
+                            iconData: Icons.directions_bike_outlined,
+                            fontSize: 25,
+                            color: Color(0xff797979),
+                          )),
+                      beforeLineStyle: LineStyle(thickness: 2),
+                      endChild: Container(
+                        height: 20,
+                        width: 87,
+                        //color: Colors.amber,
+                        child: Text("On way").centered(),
+                      ),
+                    ),
+                    TimelineTile(
+                      alignment: TimelineAlign.start,
+                      axis: TimelineAxis.horizontal,
+                      indicatorStyle: IndicatorStyle(
+                          color: Colors.white,
+                          // width: 70,
+                          iconStyle: IconStyle(
+                            iconData: Icons.sentiment_satisfied_alt_outlined,
+                            fontSize: 25,
+                            color: Color(0xff797979),
+                          )),
+                      beforeLineStyle: LineStyle(thickness: 2),
+                      endChild: Container(
+                        width: 87,
+                        //  color: MyColors.myButtonColor,
+                        child: Text("Delivered").centered(),
+                      ),
+                    ),
+                  ],
+                )),
             Divider(
               color: Colors.grey,
             ),

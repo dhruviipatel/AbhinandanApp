@@ -1,4 +1,3 @@
-import 'package:abhinandan/screens/vacation_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:velocity_x/velocity_x.dart';
 
@@ -22,8 +21,7 @@ class AddvacationScreen extends StatelessWidget {
           color: Color.fromARGB(255, 255, 255, 255),
           child: Center(
             child: InkWell(
-              onTap: () => Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => VacationScreen())),
+              onTap: () => Navigator.of(context).pop(),
               child: Container(
                 height: 48,
                 width: 296,

@@ -1,3 +1,4 @@
+import 'package:abhinandan/screens/checkout_screen.dart';
 import 'package:abhinandan/screens/subscription_details.dart';
 import 'package:flutter/material.dart';
 import 'package:velocity_x/velocity_x.dart';
@@ -25,6 +26,40 @@ class _MilkSubscriptionScreenState extends State<MilkSubscriptionScreen> {
           ),
           backgroundColor: Colors.white,
           iconTheme: IconThemeData(color: Colors.black),
+        ),
+        bottomSheet: BottomAppBar(
+          elevation: 0,
+          color: Colors.white30,
+          height: 95,
+          // color: Color.fromARGB(255, 255, 255, 255),
+          child: Center(
+            child: InkWell(
+              onTap: () {
+                if (isSelected == true)
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => CheckoutScreen(),
+                    ),
+                  );
+              },
+              child: Container(
+                height: 48,
+                width: 296,
+                decoration: BoxDecoration(
+                    color: isSelected ? Color(0xff008833) : Color(0xffd7d7d7),
+                    borderRadius: BorderRadius.circular(4)),
+                child: Text(
+                  "Buy Now",
+                  style: TextStyle(
+                      fontWeight: FontWeight.w600,
+                      fontSize: 16,
+                      letterSpacing: 0.5,
+                      color: Colors.white),
+                ).centered(),
+              ),
+            ),
+          ),
         ),
         body: Column(
           children: [

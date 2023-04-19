@@ -1,9 +1,8 @@
 import 'package:abhinandan/colors.dart';
-import 'package:abhinandan/screens/add_money_in_wallet.dart';
 import 'package:abhinandan/screens/order_confirmed_screen.dart';
+import 'package:abhinandan/screens/payment_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:velocity_x/velocity_x.dart';
-import 'checkout_screen.dart';
 
 class WalletScreen extends StatelessWidget {
   const WalletScreen({super.key});
@@ -175,7 +174,6 @@ class WalletScreen extends StatelessWidget {
                           height: 32,
                           width: 88,
                           decoration: BoxDecoration(
-                              // color: MyColors.myOrrangeColor,
                               border: Border.all(color: Color(0xff797979)),
                               borderRadius: BorderRadius.circular(4)),
                           child: Row(
@@ -229,7 +227,7 @@ class WalletScreen extends StatelessWidget {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => AddInWallet(),
+                            builder: (context) => PaymentScreen(),
                           ),
                         );
                       },

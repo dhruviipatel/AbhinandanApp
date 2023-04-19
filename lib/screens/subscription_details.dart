@@ -1,8 +1,52 @@
+import 'package:abhinandan/screens/draff.dart';
+import 'package:abhinandan/screens/extraDays_datePicker_screen.dart';
+import 'package:abhinandan/screens/home_screen.dart';
+import 'package:abhinandan/screens/milkDelivered_Datepicker.dart';
+import 'package:abhinandan/screens/vacation_DatePicker.dart';
 import 'package:flutter/material.dart';
+import 'package:syncfusion_flutter_datepicker/datepicker.dart';
 import 'package:velocity_x/velocity_x.dart';
+import 'package:intl/intl.dart';
 
-class SubscriptionDetailScreen extends StatelessWidget {
+class SubscriptionDetailScreen extends StatefulWidget {
   const SubscriptionDetailScreen({super.key});
+
+  @override
+  State<SubscriptionDetailScreen> createState() =>
+      _SubscriptionDetailScreenState();
+}
+
+class _SubscriptionDetailScreenState extends State<SubscriptionDetailScreen> {
+  String _selectedDate = '';
+  String _dateCount = '';
+  String _range = '';
+  String _rangeCount = '';
+
+  void _onSelectionChanged(DateRangePickerSelectionChangedArgs args) {
+    setState(() {
+      if (args.value is PickerDateRange) {
+        _range = '${DateFormat('dd/MM/yyyy').format(args.value.startDate)} -'
+            // ignore: lines_longer_than_80_chars
+            ' ${DateFormat('dd/MM/yyyy').format(args.value.endDate ?? args.value.startDate)}';
+      } else if (args.value is DateTime) {
+        _selectedDate = args.value.toString();
+      } else if (args.value is List<DateTime>) {
+        _dateCount = args.value.length.toString();
+      } else {
+        _rangeCount = args.value.length.toString();
+      }
+    });
+  }
+
+  void _datePicker() {
+    SfDateRangePicker(
+      onSelectionChanged: _onSelectionChanged,
+      selectionMode: DateRangePickerSelectionMode.range,
+      initialSelectedRange: PickerDateRange(
+          DateTime.now().subtract(const Duration(days: 4)),
+          DateTime.now().add(const Duration(days: 3))),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -131,50 +175,57 @@ class SubscriptionDetailScreen extends StatelessWidget {
             ),
             child: Padding(
               padding: const EdgeInsets.fromLTRB(16, 16, 16, 16),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        "Milk Delivered",
-                        style: TextStyle(
-                            fontSize: 14,
-                            fontWeight: FontWeight.w600,
-                            letterSpacing: 0.25),
-                      ),
-                      6.heightBox,
-                      Row(
-                        children: [
-                          Text(
-                            "View More",
-                            style: TextStyle(
-                                color: Color(0xfffdb600),
-                                fontSize: 12,
-                                fontWeight: FontWeight.w400,
-                                letterSpacing: 0.4),
-                          ),
-                          SizedBox(
-                            width: 15,
-                          ),
-                          Icon(
-                            Icons.arrow_forward_ios,
-                            color: Color(0xfffdb600),
-                            size: 12,
-                          )
-                        ],
-                      ),
-                    ],
-                  ),
-                  Text(
-                    "28 Days",
-                    style: TextStyle(
-                        fontSize: 14,
-                        fontWeight: FontWeight.w600,
-                        letterSpacing: 0.25),
-                  ),
-                ],
+              child: InkWell(
+                onTap: () {
+                  Navigator.of(context).push(MaterialPageRoute(
+                    builder: (context) => MilkDeliveredDatePicker(),
+                  ));
+                },
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          "Milk Delivered",
+                          style: TextStyle(
+                              fontSize: 14,
+                              fontWeight: FontWeight.w600,
+                              letterSpacing: 0.25),
+                        ),
+                        6.heightBox,
+                        Row(
+                          children: [
+                            Text(
+                              "View More",
+                              style: TextStyle(
+                                  color: Color(0xfffdb600),
+                                  fontSize: 12,
+                                  fontWeight: FontWeight.w400,
+                                  letterSpacing: 0.4),
+                            ),
+                            SizedBox(
+                              width: 15,
+                            ),
+                            Icon(
+                              Icons.arrow_forward_ios,
+                              color: Color(0xfffdb600),
+                              size: 12,
+                            )
+                          ],
+                        ),
+                      ],
+                    ),
+                    Text(
+                      "28 Days",
+                      style: TextStyle(
+                          fontSize: 14,
+                          fontWeight: FontWeight.w600,
+                          letterSpacing: 0.25),
+                    ),
+                  ],
+                ),
               ),
             ),
           ),
@@ -190,50 +241,123 @@ class SubscriptionDetailScreen extends StatelessWidget {
             ),
             child: Padding(
               padding: const EdgeInsets.fromLTRB(16, 16, 16, 16),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        "Vacation",
-                        style: TextStyle(
-                            fontSize: 14,
-                            fontWeight: FontWeight.w600,
-                            letterSpacing: 0.25),
-                      ),
-                      6.heightBox,
-                      Row(
-                        children: [
-                          Text(
-                            "View More",
-                            style: TextStyle(
-                                color: Color(0xfffdb600),
-                                fontSize: 12,
-                                fontWeight: FontWeight.w400,
-                                letterSpacing: 0.4),
-                          ),
-                          SizedBox(
-                            width: 15,
-                          ),
-                          Icon(
-                            Icons.arrow_forward_ios,
-                            color: Color(0xfffdb600),
-                            size: 12,
-                          )
-                        ],
-                      ),
-                    ],
-                  ),
-                  Text(
-                    "2 Days",
-                    style: TextStyle(
-                        fontSize: 14,
-                        fontWeight: FontWeight.w600,
-                        letterSpacing: 0.25),
-                  ),
-                ],
+              child: InkWell(
+                onTap: () {
+                  Navigator.of(context).push(MaterialPageRoute(
+                    builder: (context) => VacationDatePicker(),
+                  ));
+                },
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          "Vacation",
+                          style: TextStyle(
+                              fontSize: 14,
+                              fontWeight: FontWeight.w600,
+                              letterSpacing: 0.25),
+                        ),
+                        6.heightBox,
+                        Row(
+                          children: [
+                            Text(
+                              "View More",
+                              style: TextStyle(
+                                  color: Color(0xfffdb600),
+                                  fontSize: 12,
+                                  fontWeight: FontWeight.w400,
+                                  letterSpacing: 0.4),
+                            ),
+                            SizedBox(
+                              width: 15,
+                            ),
+                            Icon(
+                              Icons.arrow_forward_ios,
+                              color: Color(0xfffdb600),
+                              size: 12,
+                            )
+                          ],
+                        ),
+                      ],
+                    ),
+                    Text(
+                      "2 Days",
+                      style: TextStyle(
+                          fontSize: 14,
+                          fontWeight: FontWeight.w600,
+                          letterSpacing: 0.25),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ),
+          Container(
+            decoration: BoxDecoration(
+              color: Colors.white,
+              border: Border(
+                bottom: BorderSide(
+                  width: 0.3,
+                  color: Color(0xff797979),
+                ),
+              ),
+            ),
+            child: Padding(
+              padding: const EdgeInsets.fromLTRB(16, 16, 16, 16),
+              child: InkWell(
+                onTap: () {
+                  Navigator.of(context).push(MaterialPageRoute(
+                    builder: (context) => ExtraDaysScreen(),
+                  ));
+                },
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          "Extras",
+                          style: TextStyle(
+                              fontSize: 14,
+                              fontWeight: FontWeight.w600,
+                              letterSpacing: 0.25),
+                        ),
+                        6.heightBox,
+                        Row(
+                          children: [
+                            Text(
+                              "View More",
+                              style: TextStyle(
+                                  color: Color(0xfffdb600),
+                                  fontSize: 12,
+                                  fontWeight: FontWeight.w400,
+                                  letterSpacing: 0.4),
+                            ),
+                            SizedBox(
+                              width: 15,
+                            ),
+                            Icon(
+                              Icons.arrow_forward_ios,
+                              color: Color(0xfffdb600),
+                              size: 12,
+                            )
+                          ],
+                        ),
+                      ],
+                    ),
+                    Text(
+                      "3 Days",
+                      style: TextStyle(
+                          fontSize: 14,
+                          fontWeight: FontWeight.w600,
+                          letterSpacing: 0.25),
+                    ),
+                  ],
+                ),
               ),
             ),
           ),

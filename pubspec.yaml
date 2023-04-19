@@ -38,6 +38,9 @@ dependencies:
   pinput: ^2.2.31
   velocity_x: ^3.6.0
   material_design_icons_flutter: ^6.0.7096
+  syncfusion_flutter_datepicker: ^21.1.39
+  intl: ^0.17.0
+  timeline_tile: ^2.0.0
 
 dev_dependencies:
   flutter_test:

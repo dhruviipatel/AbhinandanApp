@@ -1,19 +1,21 @@
-import 'package:abhinandan/screens/product_details_screen.dart';
+import 'package:abhinandan/screens/dairyProduct_detail_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:velocity_x/velocity_x.dart';
+
 import '../colors.dart';
 import 'mycart_screen.dart';
 
-class VegitableCatagoryScreen extends StatefulWidget {
-  const VegitableCatagoryScreen({super.key});
+class DairyProductCatagoryScreen extends StatefulWidget {
+  const DairyProductCatagoryScreen({super.key});
 
   @override
-  State<VegitableCatagoryScreen> createState() =>
-      _VegitableCatagoryScreenState();
+  State<DairyProductCatagoryScreen> createState() =>
+      _DairyProductCatagoryScreenState();
 }
 
-class _VegitableCatagoryScreenState extends State<VegitableCatagoryScreen> {
+class _DairyProductCatagoryScreenState
+    extends State<DairyProductCatagoryScreen> {
   String defaulValue = "";
   List dropdownItems = [
     {"title": "In stock", "value": "1"},
@@ -25,7 +27,7 @@ class _VegitableCatagoryScreenState extends State<VegitableCatagoryScreen> {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          "Vegitables",
+          "Dairy Products",
           style: TextStyle(
               color: Colors.black, fontSize: 16, fontWeight: FontWeight.w600),
         ),
@@ -152,8 +154,7 @@ class _VegitableCatagoryScreenState extends State<VegitableCatagoryScreen> {
                       onTap: () => Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => ProductDetailsScreen(),
-                          )),
+                              builder: (context) => DairyPrdDetailScreen())),
                       child: Container(
                         decoration: BoxDecoration(
                             border: Border.all(
@@ -164,7 +165,7 @@ class _VegitableCatagoryScreenState extends State<VegitableCatagoryScreen> {
                           children: [
                             Center(
                               child: Image.asset(
-                                "assets/images/Tomato.png",
+                                "assets/images/cowmilk.png",
                                 height: 100,
                                 width: 150,
                               ).box.p3.make(),
@@ -176,7 +177,7 @@ class _VegitableCatagoryScreenState extends State<VegitableCatagoryScreen> {
                               padding:
                                   const EdgeInsets.only(left: 12, right: 12),
                               child: Text(
-                                "Tomato",
+                                "Cow Milk",
                                 style: TextStyle(
                                     fontSize: 12,
                                     fontWeight: FontWeight.w600,
@@ -196,7 +197,7 @@ class _VegitableCatagoryScreenState extends State<VegitableCatagoryScreen> {
                                     padding: const EdgeInsets.only(
                                         left: 12, right: 12),
                                     child: Text(
-                                      "1 Kg",
+                                      "1 L",
                                       style: TextStyle(
                                           fontSize: 12,
                                           color: Color(0xff797979),

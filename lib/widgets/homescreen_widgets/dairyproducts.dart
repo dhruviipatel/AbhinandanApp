@@ -1,3 +1,4 @@
+import 'package:abhinandan/screens/dairyProduct_catagory_screen.dart';
 import 'package:flutter/material.dart';
 import 'dairyItems.dart';
 
@@ -24,24 +25,30 @@ class DairyProducts extends StatelessWidget {
                   ),
                 ],
               ),
-              Row(
-                children: [
-                  Text(
-                    "View More",
-                    style: TextStyle(
-                        fontSize: 12,
-                        fontWeight: FontWeight.w600,
-                        letterSpacing: 0.5,
-                        color: Color(0xff797979)),
-                  ),
-                  IconButton(
-                      onPressed: () {},
-                      icon: Icon(
-                        Icons.arrow_forward_ios,
-                        size: 14,
-                        color: Color(0xff797979),
-                      ))
-                ],
+              InkWell(
+                onTap: () => Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => DairyProductCatagoryScreen())),
+                child: Row(
+                  children: [
+                    Text(
+                      "View More",
+                      style: TextStyle(
+                          fontSize: 12,
+                          fontWeight: FontWeight.w600,
+                          letterSpacing: 0.5,
+                          color: Color(0xff797979)),
+                    ),
+                    IconButton(
+                        onPressed: () {},
+                        icon: Icon(
+                          Icons.arrow_forward_ios,
+                          size: 14,
+                          color: Color(0xff797979),
+                        ))
+                  ],
+                ),
               ),
             ],
           ),
